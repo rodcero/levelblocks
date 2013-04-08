@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block content %}
+<ul>
+{% for item in items %}  
+  <a href="/admin/item/edit/?id={{ item.key.id() }}">{{ item.appName }}</a>
+{% endfor %}
+</ul>
+{% endblock %}

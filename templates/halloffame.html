@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% set active_page = "halloffame" %}
+{% block content %}
+<div>
+    <p>This is where we honor the most skilled of players. These players have overcome the trickiest puzzles that the internet has thrown at them. Bask in their glory for you can only dream about being among them. Either that or they cheated...lets hope not.</p>
+    <br>
+    {% for user in topusers %}
+        <div class='row offset1 span6 level-display'>
+            <div class="span2">Score: <span>{{ user.score }}</span></div>
+            <div class="span3">Player name: <span>{{ user.nickname}}</span></div>
+        </div>
+
+    <br/>
+    {% endfor %}
+</div>
+{% endblock %}

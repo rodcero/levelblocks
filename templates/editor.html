@@ -1,0 +1,119 @@
+{% extends "base.html" %}
+{% set active_page = "LevelBlocks Editor" %}
+{% block content %}
+<div class="row">
+    <div class="span12">
+        <h1>{{level.name if level.name else 'LevelBlocks'}} Editor</h1>
+    </div>
+    <div class="row">
+        <div id="level-view" class="span9 view">
+            <div id="level-grid"></div>
+        </div>
+        <div id="level-controls" class="span3">
+            <p>Hover over blocks for description.</p>
+            <h4>Blocks</h4>
+            <div id="blocks">
+                <div class="row">
+                    <div id="ground" data-block="ground" class="span1 box">
+                        <div class="ground" data-toggle="tooltip" title="Grass Block: Normal block, harmless, should be used to provide safety from the other dangers :)"></div>
+                    </div>
+                    <div id="erase" data-block="" class="span1 box">
+                        <div id="erasebg" class="" data-toggle="tooltip" title="Delete Block: does the job."></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div id="ground_rock" data-block="ground_rock" class="span1 box">
+                        <div class="ground_rock" data-toggle="tooltip" title="Rock Block: Very delicate block, held in place by some unknown force, but watch out when you come in contact with these they tend to fall down."></div>
+                    </div>
+                    <div id="bonus" data-block="bonus" class="span1 box">
+                        <div class="bonus" data-toggle="tooltip" title="I win Block: This is what you want, should be placed in the most hidden of places don't let anyone get to it, no one but your self of-course."></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div id="ground_cave" data-block="ground_cave" class="span1 box">
+                        <div class="ground_cave" data-toggle="tooltip" title="Poison Block: Name says it all.......but if you are still wondering, this block kills."></div>
+                    </div>
+                    <div id="crate" data-block="crate" class="span1 box">
+                        <div class="crate" data-toggle="tooltip" title="Crate Block: Use this to avoid coming into direct contact with another block, or switch."></div>
+                    </div>
+                </div>
+                <h4>Switches</h4>
+                <div class="row">
+                    <div id="switch_blue_off" data-block="switch_blue_off" class="span1 box">
+                        <div class="switch_blue_off" data-toggle="tooltip" title="Blue Switch: If you hit this when its in contact with any Blue-Blocks it will activate and make them fall until something catches them."></div>
+                    </div>
+                    <div id="lock_blue" data-block="lock_blue" class="span1 box">
+                        <div class="lock_blue" data-toggle="tooltip" title="Blue Block (Down): Solid strong block unless you touch the same color switch near them."></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div id="switch_green_off" data-block="switch_green_off" class="span1 box">
+                        <div class="switch_green_off" data-toggle="tooltip" title="Green Switch: If you hit this when its in contact with a Green-Blocks it will activate and make them move towards the right unless obstructed."></div>
+                    </div>
+                    <div id="lock_green" data-block="lock_green" class="span1 box">
+                        <div class="lock_green" data-toggle="tooltip" title="Green Block (Right): Solid strong block unless touch the same color switch near them."></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div id="switch_red_off" data-block="switch_red_off" class="span1 box">
+                        <div class="switch_red_off" data-toggle="tooltip" title="Red Switch: If you hit this when its in contact with any Red-Blocks it will activate and make them rise until something stops them, if not they will fly to the moon."></div>
+                    </div>
+                    <div id="lock_red" data-block="lock_red" class="span1 box">
+                        <div class="lock_red" data-toggle="tooltip" title="Red Block (Up): Solid strong block unless you touch the same color switch near them."></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div id="switch_yellow_off" data-block="switch_yellow_off" class="span1 box">
+                        <div class="switch_yellow_off" data-toggle="tooltip" title="Yellow Switch: If you hit this when its in contact with any Yellow-Blocks it will activate and make them move towards the left unless obstructed."></div>
+                    </div>
+                    <div id="lock_yellow" data-block="lock_yellow" class="span1 box">
+                        <div class="lock_yellow" data-toggle="tooltip" title="Yellow Block (Left): Solid strong block unless you touch the same color switch near them."></div>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <a id="save-level" class="btn btn-success">Save</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="dimensions-modal" class="modal hide fade">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h3>Create Level</h3>
+    </div>
+    <div class="modal-body">
+        <p>Please enter the level dimensions. Height between 10 and 50 and Width between 10 and 200. Keep it small if your computer is on the lower end in terms of performance.</p>
+        <label class="textbox">Height: <input id="mh" type="number" min='10' max="50" name="height" /></label>
+        <label class="textbox">Width: <input id="mw" type="number" min='10' max="200" name="width" /></label>
+    </div>
+    <div class="modal-footer">
+        <a href="#" id="continue-button" class="btn btn-primary">Continue</a>
+    </div>
+</div>
+
+<div id="save-modal" class="modal hide fade">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h3>Save Level</h3>
+    </div>
+    <div class="modal-body">
+        <p>Please enter a name for this level.</p>
+        <label class="textbox">Name: <input id="levelname" type="text" name="name" value="{{level.name}}" /></label>
+    </div>
+    <div class="modal-footer">
+        <a href="#" id="save-button" class="btn btn-primary">Save</a>
+    </div>
+</div>
+<script type='text/javascript'>
+    {% if level == 0 %}
+        var levelobject = 'none';
+        var levelid = '';
+    {% else %}
+        var levelobject = {{level.level|safe}};
+        var levelid = {{level.key.id()}};
+    {% endif %}
+</script>
+<script type="text/javascript" src="/static/js/editor.js"></script>
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% set active_page = "profile" %}
+{% block content %}
+<div>
+    <div>Score: <span>{{user.score}}</span></div>
+    <label >Nickname: <input id="nickname" type="text" name="nickname" value='{{user.nickname}}' /></label>
+    <span id="message" class='hidden'>Done.</span>
+    <a id="update" class='btn'>Update</a>
+</div>
+<script type='text/javascript'>
+    $(document).ready(function(){
+        $('#update').click(function(e){
+            e.preventDefault();
+            $.post('/profile/', {nickname: $('#nickname').val()}, function(data){
+                $('#message').removeClass('hidden');
+                $('#update').addClass('hidden');
+            });
+        });
+    });
+</script>
+{% endblock %}

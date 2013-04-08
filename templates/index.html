@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% set active_page = "play" %}
+{% block content %}
+    <div class='panel span3'>
+        <h3>Undefeated</h3>
+        {% for level in max %}
+            <div class="row level-display">
+                <a class="span2" href="/game/{{level.key.id()}}">{{ level.name }}</a>
+                <div class='span1'>Jackpot: <span>{{level.score}}</span></div>
+            </div>
+        <br>
+        {% endfor %}
+    </div>
+    <div class='panel span3'>
+        <h3>Highest Score</h3>
+        {% for level in score %}
+        <div class="row level-display">
+            <a class="span2" href="/game/{{level.key.id()}}">{{ level.name }}</a>
+            <div class='span1'>Score: <span class='span1'>{{level.score}}</span></div>
+        </div>
+        <br>
+        {% endfor %}
+    </div>
+    <div class='panel span3'>
+        <h3>Most Popular</h3>
+        {% for level in popular %}
+        <div class="row level-display">
+            <a class="span2" href="/game/{{level.key.id()}}">{{ level.name }}</a>
+            <div class='span1'>Score: <span class='span1'>{{level.score}}</span></div>
+        </div>
+        <br>
+        {% endfor %}
+    </div>
+
+{% endblock %}

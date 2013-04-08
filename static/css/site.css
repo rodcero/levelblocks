@@ -1,0 +1,178 @@
+body{
+    font-family: 'Roboto', sans-serif;
+}
+
+.menu{
+    margin-top: 40px;
+    margin-bottom: 10px;
+}
+
+.view{
+    overflow: scroll;
+    height: 680px;
+}
+
+.grid-row{
+    height: 50px;
+
+}
+
+.grid-cell {
+    border-top: solid 1px gainsboro;
+    border-left: solid 1px gainsboro;
+    height: 50px;
+    width: 50px;
+    float: left;
+}
+
+.ground{
+    background-image: url('/static/img/ground.png');
+    background-size: 100%;
+}
+
+.crate{
+    background-image: url('/static/img/crate.png');
+    background-size: 100%;
+}
+
+.ground_cave{
+    background-image: url('/static/img/ground_cave.png');
+    background-size: 100%;
+}
+
+#erasebg{
+    background-image: url('/static/img/erase.png');
+    background-size: 100%;
+}
+
+.ground_rock{
+    background-image: url('/static/img/ground_rock.png');
+    background-size: 100%;
+}
+
+.bonus{
+    background-image: url('/static/img/bonus.png');
+    background-size: 100%;
+}
+
+.switch_blue_off{
+    background: url('/static/img/switch_blue_off.png') no-repeat center bottom;
+    background-size: 100%;
+}
+
+.switch_green_off{
+    background: url('/static/img/switch_green_off.png') no-repeat center bottom;
+    background-size: 100%;
+}
+
+.switch_red_off{
+    background: url('/static/img/switch_red_off.png') no-repeat center bottom;
+    background-size: 100%;
+}
+
+.switch_yellow_off{
+    background: url('/static/img/switch_yellow_off.png') no-repeat center bottom;
+    background-size: 100%;
+}
+
+.lock_blue{
+     background: url('/static/img/lock_blue.png') no-repeat center bottom;
+     background-size: 100%;
+ }
+
+.lock_green{
+    background: url('/static/img/lock_green.png') no-repeat center bottom;
+    background-size: 100%;
+}
+
+.lock_red{
+    background: url('/static/img/lock_red.png') no-repeat center bottom;
+    background-size: 100%;
+}
+
+.lock_yellow{
+    background: url('/static/img/lock_yellow.png') no-repeat center bottom;
+    background-size: 100%;
+}
+
+#blocks .box{
+    padding: 10px;
+    border: solid 1px white;
+}
+
+#blocks .box:hover{
+    border: solid 1px lightskyblue;
+    border-radius: 5px;
+}
+
+.box-selected{
+    border: solid 1px dodgerblue;
+    background-color: lightskyblue;
+    border-radius: 5px;
+}
+
+.box div{
+    width: 60px;
+    height: 60px;
+}
+
+.google{
+    display: block;
+    height: 60px;
+    width: 294px;
+    background: url('/static/img/Red-signin_Long_base_20dp.png') no-repeat center bottom;
+}
+
+.google:hover{
+     display: block;
+     height: 60px;
+     width: 294px;
+     background: url('/static/img/Red-signin_Long_hover_20dp.png') no-repeat center bottom;
+ }
+
+.google:active{
+    display: block;
+    height: 60px;
+    width: 294px;
+    background: url('/static/img/Red-signin_Long_press_20dp.png') no-repeat center bottom;
+}
+
+.panel{
+    float: left;
+}
+
+.level-display{
+    border: 1px solid gainsboro;
+    padding: 10px 0px;
+    border-radius: 5px;
+    margin-right: 5px;
+    margin-bottom: 10px;
+}
+
+.level-display span{
+    font-size: x-large;
+    font-weight: bold;
+    color: #0088cc;
+}
+
+.createdby{
+    padding: 5px;;
+}
+
+.createdby span{
+    font-size: x-large;
+    font-weight: bold;
+    color: #0088cc;
+}
+
+#save-level{
+
+    margin-left: 165px;
+}
+
+.googleplus{
+    display: block;
+    height: 64px;
+    width: 64px;
+    background: url('/static/img/gplus-64.png.png') no-repeat center bottom;
+}

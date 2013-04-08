@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% set active_page = "LevelBlocks" %}
+{% block content %}
+<div>
+    {% for level in levels %}
+    <a href="#">{{ level.name }}</a>
+    <br/>
+    {% endfor %}
+</div>
+{% endblock %}

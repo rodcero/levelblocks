@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+
+{% block content %}
+<form class='form-horizontal' action='{{upload_url}}' method='post' name='post' enctype="multipart/form-data">
+	<label>Icon:</label>
+	<input class='span12' type='text' id='icon' name='icon' value=''>
+	<br/>
+	<label>app Name:</label>
+	<input class='span12' type='text' id='appname' name='appname' value=''>
+	<input id='appfile' type="file" name="appfile">
+	<br/>
+	<label>diff Name:</label>
+	<input class='span12' type='text' id='diffname' name='diffname' value=''>
+	<input id='difffile' type="file" name="difffile">
+	<br/>
+    <label>spec Name:</label>
+    <input class='span12' type='text' id='specname' name='specname' value=''>
+    <input id='specfile' type="file" name="specfile">
+    <br/>
+    <label>tint Name:</label>
+    <input class='span12' type='text' id='tintname' name='tintname' value=''>
+    <input id='tintfile' type="file" name="tintfile">
+    <br/>
+    <label>tintmask Name:</label>
+    <input class='span12' type='text' id='tintmaskname' name='tintmaskname' value=''>
+    <input id='tintmaskfile' type="file" name="tintmaskfile">
+    <br/>
+	
+</form>
+<input class='btn' type="button" name="save" onClick="save()" value="Save"/>
+<input class='btn' type="button" name="cancel" onClick="cancel()" value="Cancel"/>
+
+<script type="text/javascript">
+
+document.getElementById('appfile').onchange = function () {
+  document.getElementById('appname').value = this.value.substring(this.value.lastIndexOf("\\")+1,this.value.length);
+};
+
+document.getElementById('difffile').onchange = function () {
+  document.getElementById('diffname').value = this.value.substring(this.value.lastIndexOf("\\")+1,this.value.length);
+};
+
+document.getElementById('specfile').onchange = function () {
+    document.getElementById('specname').value = this.value.substring(this.value.lastIndexOf("\\")+1,this.value.length);
+};
+
+document.getElementById('tintfile').onchange = function () {
+    document.getElementById('tintname').value = this.value.substring(this.value.lastIndexOf("\\")+1,this.value.length);
+};
+
+document.getElementById('tintmaskfile').onchange = function () {
+    document.getElementById('tintmaskname').value = this.value.substring(this.value.lastIndexOf("\\")+1,this.value.length);
+};
+
+function save()
+{
+    document.post.submit();
+}
+
+function cancel()
+{
+    if (confirm("Really cancel?"))
+    {
+        document.location = '/admin/';
+    }
+}
+
+</script>
+{% endblock %}

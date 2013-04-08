@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% set active_page = "mylevels" %}
+{% block content %}
+<div class="row">
+    <div class="offset10 span2"><a class="btn btn-success" href='/editor/'>New Level</a></div>
+</div>
+<div>
+    {% for level in levels %}
+        <div class="row">
+            <a class="span2" href="#">{{ level.name }}</a>
+            <span class='span2'>Deaths: {{level.score}}</span>
+            {% if not level.published %}
+                <span class='span2'><a href="/editor/{{level.key.id()}}" class="btn">edit</a></span>
+                <span class='span2'><a href="/mylevels/delete/{{level.key.id()}}" class="btn">delete</a></span>
+                <span class='span2'><a href="/game/{{level.key.id()}}" class="btn">publish</a></span>
+            {% endif %}
+
+
+        </div>
+
+        <br>
+    {% endfor %}
+</div>
+{% endblock %}
